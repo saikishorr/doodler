@@ -1,0 +1,112 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* A doodle-like font */
+    background-color: #f0f8ff; /* AliceBlue */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Hide scrollbars as game manages its own scrolling */
+    color: #333;
+}
+
+h1 {
+    color: #4CAF50; /* Green */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #fff;
+}
+
+.game-container {
+    width: 400px; /* Standard Doodle Jump width */
+    height: 600px; /* Standard Doodle Jump height */
+    border: 3px solid #8B4513; /* SaddleBrown */
+    background-color: #e0ffff; /* LightCyan */
+    overflow: hidden; /* Crucial for clipping game elements */
+    position: relative; /* For absolute positioning of grid and player */
+    box-shadow: 8px 8px 15px rgba(0,0,0,0.4);
+    border-radius: 15px;
+}
+
+#grid {
+    position: absolute;
+    width: 100%;
+    height: 100%; /* Will dynamically change based on scrolling */
+    background-color: transparent;
+    /* Optional: background image for doodle-like feel */
+    /* background-image: url('doodle-bg.png'); */
+    /* background-size: cover; */
+}
+
+.player {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: #ff4500; /* OrangeRed */
+    border-radius: 50%; /* Makes it circular */
+    bottom: 0; /* Starts at the bottom */
+    left: calc(50% - 30px); /* Center horizontally */
+    z-index: 10; /* Ensure player is on top of platforms */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    transition: background-color 0.1s ease-in-out; /* Smooth color change on jump */
+}
+
+.player.jumping {
+    background-color: #00bfff; /* DeepSkyBlue when jumping */
+}
+
+
+.platform {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    background-color: #4CAF50; /* Green */
+    border-radius: 10px;
+    border: 2px solid #388E3C; /* Darker green */
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    z-index: 5; /* Platforms are below player */
+}
+
+#game-over-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    text-align: center;
+    z-index: 100;
+}
+
+#game-over-screen h2 {
+    color: #D32F2F; /* Red */
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+#restart-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#restart-button:hover {
+    background-color: #45a049;
+}
+
+.hidden {
+    display: none;
+}
